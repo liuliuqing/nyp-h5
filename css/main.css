@@ -1,0 +1,65 @@
+@font-face {
+	font-weight:normal;
+  	font-style:normal;
+  	font-family: "PingFang";
+  	src: url("./font/PingFang SC Regular.ttf");
+}
+html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+body{line-height:1.6;font-family:"PingFang", -apple-system-font, "Helvetica Neue", sans-serif;background-color: #dddddd59;}
+body,html {height:100%;-webkit-tap-highlight-color:transparent}
+body,h1,h2,h3,h4,h5,h6,button{font-family: "PingFang", -apple-system-font, "Microsoft Yahei", "Lucida Grande", "Helvetica Neue",Helvetica,Arial,sans-serif;color: #555;}
+h1,h2,h3,h4,h5,h6{margin: 0;}
+*{box-sizing: border-box;margin:0;padding:0;}
+a img{border:0;}
+a{text-decoration:none;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);outline: -webkit-focus-ring-color auto 0px;}
+:focus{  outline: -webkit-focus-ring-color auto 0px;}
+.clearfix {*zoom: 1;}
+.clearfix:before,
+.clearfix:after {display: table;line-height: 0;content: "";}
+.clearfix:after {clear: both;}
+p{margin: 0;}
+ul{list-style: none;}
+img{max-width: 100%;display: block}
+option{font-size: 14px;}
+select{white-space:nowrap;  overflow: hidden;}
+
+::-webkit-input-placeholder {color: #CCCCCC; }
+.hr1 {width:100%;margin:0 auto;border: 0;height:0;border-top: 1px solid rgba(0, 0, 0, 0.1);}
+.container{display:block;*zoom: 1;}
+.container:before,
+.container:after {display: table;line-height: 0;content: "";}
+.container:after {clear: both;}
+
+.mb20{margin-bottom: 20px;}
+.mb15{margin-bottom: 15px;}
+.mb10{margin-bottom: 10px;}
+.mt10{margin-top: 10px;}
+.pl10{padding-left: 10px;}
+.pr12{padding-right: 12px;}
+
+.login-container{width:100%;height: 100%;background: -webkit-linear-gradient(top,#0F0C29,#302B63,#24243E);}
+.login-container H2{margin: 70px auto 0 auto;text-align:center;font-size: 30px;color: #FFFFFF;font-weight: 100;}
+.login-container H4{margin: 10px auto 70px auto;text-align:center;font-size:12px;color: #FFFFFF;font-weight: 100;}
+.login-box{margin: 0 25px;}
+.login-box form>div{background: #3e3a68;border-radius: 100px;height: 50px;line-height: 50px;padding-left: 20px;}
+.login-box form>div>i{display: inline-block;width: 25px;height: 25px;vertical-align: middle;}
+.login-box form>div>input{margin-left: 10px;height: 88%;width: 75%;color: #AEABB8;font-size: 13px;border: none;background-color: #3e3a68;background-size: 100%;}
+.login-box .username i{background-image: url("../img/icon/Username.png");}
+.login-box .password i{background-image: url("../img/icon/Password.png");}
+.login-box button{background-color: #FF8B34;height: 50px;line-height: 50px;color: #FFFFFF;text-align: center;border-radius: 100px;width: 100%;border: none;}
+.login-box .rem-pass{font-size: 13px;color: #AEABB8;}
+.login-box .rem-pass i{display: inline-block;width: 20px;height: 20px;background-image: url("../img/icon/round_check_fill.png");background-size: 100%;margin-right: 10px;vertical-align: middle;margin-top: -2px;}
+.login-box .rem-pass input{display: none;}
+
+header,nav,.container{background-color: #FFF;}
+
+header{border-bottom: 1px solid #D9D9D9;}
+header h1{text-align: center;height: 44px;line-height: 44px;font-size: 17px;color: #030303;font-weight: 400;}
+nav>ul li{display: inline-block;font-size: 12px;color: #000;height: 40px;line-height: 40px;text-align: center;}
+nav>ul li i{width: 6px;height: 6px;background-image: url("../img/Triangle Copy.png");background-size: 100%;display: inline-block;margin-left: 5px;}
+nav>ul li.active i{background-image: url("../img/Triangle.png");}
+nav>ul li.active{font-size: 13px;color: #FF8B34;}
+nav>ul li.ul_4{width: calc( (100% - 15px)/4 );}
+
+.list-box{}
+.list-box>div{}
