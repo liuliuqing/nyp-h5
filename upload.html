@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>上画</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<link rel="stylesheet" href="css/main.css" />
+	</head>
+	<body ontouchstart>
+		<header>
+			<span><i></i>首页</span>
+			<h1>上画图片详情</h1>
+		</header>
+		<div class="paint-box">
+			<section>
+				<h3>信息展示</h3>
+				<div class="info">
+					<p>
+						<span>小区编号</span>
+						<em>SZHL001</em>
+					</p>
+					<p>
+						<span>小区名称</span>
+						<em>SZHL001</em>
+					</p>
+					<p>
+						<span>售卖开始时间</span>
+						<em>2018-10-20</em>
+					</p>
+					<p>
+						<span>售卖结束时间</span>
+						<em>2019-10-20</em>
+					</p>
+					<p>
+						<span>客户编号</span>
+						<em>SZHL002</em>
+					</p>
+					<p>
+						<span>客户名称</span>
+						<em>SZHL001</em>
+					</p>
+				</div>
+			</section>
+			<section>
+				<h3>图片上传</h3>
+				<p><span>上传说明： 最多可上传10张照片</span></p>
+				<div class="img">
+					<ul>
+						<!--<li><img src="img/6.png" alt=""><i></i></li>
+                        <li><img src="img/2.jpg" alt=""><i></i></li>
+                        <li><img src="img/3.jpg" alt=""><i></i></li>
+                        <li><img src="img/5.jpg" alt=""><i></i></li>
+                        <li><img src="img/7.png" alt=""><i></i></li>-->
+						<!--<li class="addimg"><input type="file"></li>-->
+					</ul>
+				</div>
+			</section>
+		</div>
+		<a class="button disabled">提交</a>
+		<div class="layer">
+			<i class="closebtn"></i>
+			<div class="imgbox">
+				<div class="context">
+					<ul class="clearfix">
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script src="js/zepto.min.js"></script>
+		<script>
+			/*$.ajax({
+			              type: 'GET',
+			              url: '/projects',
+			              data: { name: 'Zepto.js' },
+			              dataType: 'json',
+			              timeout: 300,
+			              context: $('body'),
+			              success: function(data){
+			                this.append(data.project.html)
+			              },
+			              error: function(xhr, type){
+			                alert('Ajax error!')
+			              }
+			            })
+
+			            $.ajax({
+			              type: 'POST',
+			              url: '/projects',
+			              data: JSON.stringify({ name: 'Zepto.js' }),
+			              contentType: 'application/json'
+			            })
+
+			            *
+			            *
+			            * https://www.html.cn/doc/zeptojs_api/#$.ajax
+			            * $(document).on('click', 'nav a', false)
+			            * */
+			         
+			$(function() {            
+				var _laylist = [],
+					_layindex = 0,
+					_imglength = 0;            
+				var imglist = [
+					{alt: '',src: 'img/6.png'},                
+					{alt: '',src: 'img/2.jpg'},
+					{alt: '',src: 'img/3.jpg'},
+					{alt: '',src: 'img/5.jpg'},
+					{alt: '',src: 'img/7.png'}
+				]
+				$('.img ul').html(setImgList('upload', imglist));            
+				$(document).on('tap', '.img li', function() {               
+					$('.imgbox ul').html(setImgList('layer', imglist));               
+					_layindex = $(this).index();               
+					_imglength = $('.img').find('img').length;               
+					$('.imgbox ul').width(document.body.clientWidth * _imglength);               
+					$('.imgbox ul li').width(document.body.clientWidth);               
+					var pxlength = document.body.clientWidth * _layindex;               
+					$('.imgbox ul').css('transform', 'translateX(-' +  pxlength + 'px)');               
+					$('.layer').show();               
+					$('body').css({"overflow-x": "hidden","overflow-y": "hidden"               });            
+				})
+				$(document).on('swipeLeft', '.imgbox', function() {               
+					var _newIndex = _layindex + 1;               
+					if(_newIndex >= _imglength) return;               
+					$('.imgbox ul').animate({transform: 'translateX(-' +  document.body.clientWidth * _newIndex + 'px)'}, function() {                  
+						_layindex += 1;              
+					});            
+				}).on('swipeRight', '.imgbox', function() {               
+					var _newIndex = _layindex - 1;               
+					if(_newIndex < 0) return;               
+					$('.imgbox ul').animate({transform: 'translateX(-' +  document.body.clientWidth * _newIndex + 'px)'}, function() {                  
+						_layindex -= 1;              
+					});            
+				})
+				$('.closebtn').tap(function() {                
+					$('.layer').hide();                
+					$('body').css({"overflow-x": "auto","overflow-y": "auto"               });            
+				})
+				$('.paint-box').on('tap', '.img li i', function(e) {               
+					e.preventDefault();               
+					e.stopPropagation();               
+					var index = $(this).parents('li').index();               
+					imglist.splice(index, 1);               
+					$('.img ul').html(setImgList('upload', imglist))            
+				})
+				$('.paint-box').on('tap', '.addimg', function(e) {               
+					e.preventDefault();               
+					e.stopPropagation();               
+					if(imglist.length > 10) return;               
+					imglist.push({alt: '',src: 'img/8.jpg'});               
+					$('.img ul').html(setImgList('upload', imglist));               
+					if(imglist.length == 10) {                  
+						$('.addimg').hide();               
+					}            
+				}) 
+
+				$('header span').tap(function(){
+					window.history.back(-1);
+				})
+
+				    
+			});         
+			function setImgList(type, imglist) {            
+				var _html = '';            
+				for(var i = 0; i < imglist.length; i++) {               
+					if(type == 'upload') {                  
+						_html += '<li><img src="' + imglist[i].src + '" alt="' + imglist[i].alt + '"><i></i></li>';               
+					} else {                  
+						_html += '<li><img src="' + imglist[i].src + '" alt="' + imglist[i].alt + '"></li>';               
+					}            
+				}            
+				if(type == 'upload') {               
+					_html += '<li class="addimg"><input type="file"></li>';            
+				}            
+				return _html;         
+			}
+
+
+			function showNewInfoMsg(msg) {
+				var _html = $('<div class="new-info-msg" style="position: fixed;top: 0;left: 0;text-align: center;z-index: 9999;width: 100%;">' +
+							'<p style="display: inline-block;padding:10px 15px 10px;border-radius: 3px;color: #fff;line-height: 20px;text-align: left;' +
+			     			'background: rgba(0,0,0,.75);font-size: 13px;">'+msg+'</p></div>');
+				$('body').append(_html);
+				_html.css('top',-(_html.height()+20));
+				_html.animate({top:45},500);
+				setTimeout(function () {
+					_html.animate({
+						top:-(_html.height()+20)
+					},200);
+					setTimeout(function () {
+						_html.remove();
+					},200);
+				},2000);
+			}
+
+
+
+		</script>
+	</body>
+</html>

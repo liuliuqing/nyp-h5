@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>web</title>
+		<title>登录</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
 		<link rel="stylesheet" href="css/main.css" />
 	</head>
@@ -11,7 +11,7 @@
 			<h2>哪有屏</h2>
 			<h4>电梯广告领军者</h4>
 			<div class="login-box">
-				<form action="" method="post">
+				<form action="">
 					<div class="username mb20">
 						<i></i><input type="text" placeholder="用户名">
 					</div>
@@ -34,6 +34,11 @@
 						$(this).find('input').attr("checked",true);
 					}
 				})
+
+				$('button').tap(function(){
+					window.location.href = '/nyp-h5/community_list.html';
+				})
+
 			});
 		</script>
 	</body>

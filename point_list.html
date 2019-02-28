@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>点位列表</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<link rel="stylesheet" href="css/main.css" />
+	</head>
+	<body ontouchstart>
+		<header><span><i></i>首页</span><h1>星海名城</h1></header>
+		<nav>
+			<ul>
+				<li class="ul_3 _point"><span>点位名称<i></i></span></li>
+				<li class="ul_3 _starttime"><span>售卖开始时间<i></i></span></li>
+				<li class="ul_3 _endtime"><span>售卖开始时间<i></i></span></li>
+			</ul>
+			<div class="menu-box">
+				<ul class="clearfix"></ul>
+				<div class="clearfix"><span class="reset">重置</span><span class="submit">确定</span></div>
+			</div>
+		</nav>
+		<div class="hr10"></div>
+		<div class="pointlist-box">
+			<div class="point-list">
+				<h4><em>一栋一号楼</em><span>DW0001</span></h4>
+				<p class="mt5"><span>售卖开始时间</span><em>2018-10-10</em></p>
+				<p><span>售卖结束时间</span><em>2018-12-10</em></p>
+				<p><span>客户编号</span><em>sw000002</em></p>
+				<p class="mb5"><span>客户名称</span><em>麦当劳</em></p>
+			</div>
+			<div class="point-list">
+				<h4><em>一栋一号楼</em><span>DW0001</span></h4>
+				<p class="mt5"><span>售卖开始时间</span><em>2018-10-10</em></p>
+				<p><span>售卖结束时间</span><em>2018-12-10</em></p>
+				<p><span>客户编号</span><em>sw000002</em></p>
+				<p class="mb5"><span>客户名称</span><em>麦当劳</em></p>
+			</div>
+			<div class="point-list">
+				<h4><em>一栋一号楼</em><span>DW0001</span></h4>
+				<p class="mt5"><span>售卖开始时间</span><em>2018-10-10</em></p>
+				<p><span>售卖结束时间</span><em>2018-12-10</em></p>
+				<p><span>客户编号</span><em>sw000002</em></p>
+				<p class="mb5"><span>客户名称</span><em>麦当劳</em></p>
+			</div>
+		</div>
+		<div class="date-cover"></div>
+		<script src="js/zepto.min.js"></script>
+		<script>
+			$(function() {            
+				var _list = [               {
+					name: '小区名称',
+					cust: '肯德基',
+					time: '2018.10.10-2018.12.13',
+					img: 'img/empty.png',
+					type: '1',
+					tyname: '未提交'
+				},                 {
+					name: '星海名城星海名城星海名城星海名城星海名城星海名城',
+					cust: '肯德基',
+					time: '2018.10.10-2018.12.13',
+					img: 'img/img1.png',
+					type: '2',
+					tyname: '已提交'
+				},                 {
+					name: '星海名城',
+					cust: '肯德基',
+					time: '2018.10.10-2018.12.13',
+					img: 'img/img1.png',
+					type: '3',
+					tyname: '已通过'
+				},                 {
+					name: '小区名称',
+					cust: '肯德基',
+					time: '2018.10.10-2018.12.13',
+					img: 'img/img1.png',
+					type: '4',
+					tyname: '已退回'
+				},                 {
+					name: '星海名城',
+					cust: '肯德基',
+					time: '2018.10.10-2018.12.13',
+					img: 'img/img1.png',
+					type: '1',
+					tyname: '未提交'
+				},                 {
+					name: '小天一号店',
+					cust: '肯德基',
+					time: '2018.10.10-2018.12.13',
+					img: 'img/img1.png',
+					type: '4',
+					tyname: '已退回'
+				},                 {
+					name: '小区名称',
+					cust: '肯德基',
+					time: '2018.10.10-2018.12.13',
+					img: 'img/img1.png',
+					type: '2',
+					tyname: '已提交'
+				},                 {
+					name: '星海名城',
+					cust: '肯德基',
+					time: '2018.10.10-2018.12.13',
+					img: 'img/img1.png',
+					type: '1',
+					tyname: '未提交'
+				},             ]            
+				var _html = '';            
+				for(var i = 0; i < _list.length; i++) {               
+					_html += '<div class="content-list"><a href=""><img src="' + _list[i].img + '" /></a>' +
+					'<div><p><span>小区名称</span><em class="t-' + _list[i].type + '">' +  _list[i].tyname  + '</em></p>' +
+					'<p>客户名称：' + _list[i].cust + '</p><p>售卖时间： ' + _list[i].time + '</p></div></div>';            
+				}            
+				//$('.list-box').html(_html);
+			                
+				/*nav切换*/
+				var	_point = [
+						{name:'不限',value:'0',flag: true},
+						{name:'一栋二号楼',value:'01'},
+						{name:'一栋三号楼',value:'02'},
+						{name:'一栋四号楼',value:'03'},
+						{name:'二栋一号楼',value:'04'},
+						{name:'二栋二号楼',value:'05'},
+					],
+					_starttime = [
+						{name:'一周',value:'week'},
+						{name:'一个月',value:'month'},
+						{name:'三个月',value:'thrmonth'},
+						{name:'半年',value:'halfyear'}
+					],
+					_endtime = [
+						{name:'一周',value:'week'},
+						{name:'一个月',value:'month'},
+						{name:'三个月',value:'thrmonth'},
+						{name:'半年',value:'halfyear'}
+					];
+				$('.ul_3').click(function(){
+					$(this).addClass('active').siblings().removeClass('active');
+					$('.menu-box').show();
+					$('.date-cover').show();
+
+					if($(this).hasClass('_point')){
+						$(".menu-box ul").html(navList(_point, true));
+						return;
+					}
+					if($(this).hasClass('_starttime')){
+						$(".menu-box ul").html(navList(_starttime));
+						return;
+					}
+					if($(this).hasClass('_endtime')){
+						$(".menu-box ul").html(navList(_endtime));
+						return;
+					}
+				})
+				$('.date-cover').click(function(){
+					$('.date-cover').hide();
+					$('.menu-box').hide();
+					$('.ul_3').removeClass('active');
+				})
+				$('nav').on('click','.menu-box li',function(){
+					$('.menu-box li').removeClass('active');
+					$(this).addClass('active');
+				})
+				$('header span').tap(function(){
+					window.history.back(-1);
+				})
+			});
+			function navList(list, type) {
+				var relist = '', _active = '';
+				if(type){
+					for(var i = 0; i < list.length; i++) {
+						_active = list[i].flag ? 'active' : '';
+						relist += '<li class="default '+ _active +'"><span>'+ list[i].name +'</span></li>';
+					}
+				}else{
+					for(var i = 0; i < list.length; i++) {
+						_active = list[i].flag ? 'active' : '';
+						relist += '<li class="'+ _active +'"><span>'+ list[i].name +'</span></li>';
+					}
+				}
+				return relist;
+			}
+
+
+		</script>
+	</body>
+</html>

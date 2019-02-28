@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>小区列表</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<link rel="stylesheet" href="css/main.css" />
+	</head>
+	<body ontouchstart>
+		<header><h1>首页</h1></header>
+		<nav>
+			<ul>
+				<li class="ul_4 _community"><span>小区名称<i></i></span></li>
+				<li class="ul_4 _customer"><span>客户名称<i></i></span></li>
+				<li class="ul_4 _saletime"><span>售卖时间<i></i></span></li>
+				<li class="ul_4 _status"><span>状态<i></i></span></li>
+			</ul>
+			<div class="menu-box">
+				<ul class="clearfix">
+					<!--<li><span>不限</span></li>
+					<li><span>星海名城</span></li>
+					<li><span>豪方现代花园</span></li>
+					<li><span>红书别院</span></li>
+					<li><span>泰阳硅谷公寓</span></li>
+					<li><span>城市山谷</span></li>-->
+				</ul>
+				<div class="clearfix"><span class="reset">重置</span><span class="submit">确定</span></div>
+			</div>
+		</nav>
+		<div class="hr10"></div>
+		<div class="container list-box">
+			<div class="content-list">
+				<a href=""><img src="img/empty.png" /></a>
+				<div>
+					<p>
+						<span>小区名称</span>
+						<em class="t-1">未提交</em>
+					</p>
+					<p>客户名称： 肯德基</p>
+					<p>售卖时间： 2018.10.10-2018.12.13</p>
+				</div>
+			</div>
+		</div>
+		<div class="date-cover"></div>
+		<script src="js/zepto.min.js"></script>
+		<script>
+			$(function() {            
+				var _list = [               {
+					name: '小区名称',
+					cust: '肯德基',
+					time: '2018.10.10-2018.12.13',
+					img: 'img/empty.png',
+					type: '1',
+					tyname: '未提交'
+				},                 {
+					name: '星海名城星海名城星海名城星海名城星海名城星海名城',
+					cust: '肯德基',
+					time: '2018.10.10-2018.12.13',
+					img: 'img/3.png',
+					type: '2',
+					tyname: '已提交'
+				},                 {
+					name: '星海名城',
+					cust: '肯德基',
+					time: '2018.10.10-2018.12.13',
+					img: 'img/3.png',
+					type: '3',
+					tyname: '已通过'
+				},                 {
+					name: '小区名称',
+					cust: '肯德基',
+					time: '2018.10.10-2018.12.13',
+					img: 'img/3.png',
+					type: '4',
+					tyname: '已退回'
+				},                 {
+					name: '星海名城',
+					cust: '肯德基',
+					time: '2018.10.10-2018.12.13',
+					img: 'img/3.png',
+					type: '1',
+					tyname: '未提交'
+				},                 {
+					name: '小天一号店',
+					cust: '肯德基',
+					time: '2018.10.10-2018.12.13',
+					img: 'img/3.png',
+					type: '4',
+					tyname: '已退回'
+				},                 {
+					name: '小区名称',
+					cust: '肯德基',
+					time: '2018.10.10-2018.12.13',
+					img: 'img/3.png',
+					type: '2',
+					tyname: '已提交'
+				},                 {
+					name: '星海名城',
+					cust: '肯德基',
+					time: '2018.10.10-2018.12.13',
+					img: 'img/3.png',
+					type: '1',
+					tyname: '未提交'
+				},             ]            
+				var _html = '';            
+				for(var i = 0; i < _list.length; i++) {               
+					_html += '<div class="content-list"><a onclick="upload('+ _list[i].type +')"><img src="' + _list[i].img + '" /></a>' +
+					'<div><p><span>小区名称</span><em class="t-' + _list[i].type + '">' +  _list[i].tyname  + '</em></p>' +
+					'<p onclick="point()">客户名称：' + _list[i].cust + '</p><p>售卖时间： ' + _list[i].time + '</p></div></div>';            
+				}            
+				$('.list-box').html(_html);
+			                
+				/*nav切换*/
+				var	_community = [
+						{name:'不限',value:'0',flag: true},
+						{name:'星海名城',value:'01'},
+						{name:'豪方现代花园豪方现代花园',value:'02'},
+						{name:'红书别院',value:'03'},
+						{name:'泰阳硅谷公寓',value:'04'},
+						{name:'城市山谷',value:'05'},
+					],
+					_customer = [
+						{name:'肯德基',value:'0'},
+						{name:'麦当劳',value:'01'},
+					],
+					_saletime = [
+						{name:'一周',value:'week'},
+						{name:'一个月',value:'month'},
+						{name:'三个月',value:'thrmonth'},
+						{name:'半年',value:'halfyear'}
+					],
+					_status = [
+						{name:'未提交',value:'1'},
+						{name:'已提交',value:'2'},
+						{name:'已通过',value:'3'},
+						{name:'已退回',value:'4'},
+					];
+				$('.ul_4').click(function(){
+					$(this).addClass('active').siblings().removeClass('active');
+					$('.menu-box').show();
+					$('.date-cover').show();
+
+					if($(this).hasClass('_community')){
+						$(".menu-box ul").html(navList(_community, true));
+						return;
+					}
+					if($(this).hasClass('_customer')){
+						$(".menu-box ul").html(navList(_customer));
+						return;
+					}
+					if($(this).hasClass('_saletime')){
+						$(".menu-box ul").html(navList(_saletime));
+						return;
+					}
+					if($(this).hasClass('_status')){
+						$(".menu-box ul").html(navList(_status));
+						return;
+					}
+				})
+				$('.date-cover').click(function(){
+					$('.date-cover').hide();
+					$('.menu-box').hide();
+					$('.ul_4').removeClass('active');
+				})
+
+				$('nav').on('click','.menu-box li',function(){
+					$('.menu-box li').removeClass('active');
+					$(this).addClass('active');
+				})
+			});
+			function navList(list, type) {
+				var relist = '', _active = '';
+				if(type){
+					for(var i = 0; i < list.length; i++) {
+						_active = list[i].flag ? 'active' : '';
+						relist += '<li class="default '+ _active +'"><span>'+ list[i].name +'</span></li>';
+					}
+				}else{
+					for(var i = 0; i < list.length; i++) {
+						_active = list[i].flag ? 'active' : '';
+						relist += '<li class="'+ _active +'"><span>'+ list[i].name +'</span></li>';
+					}
+				}
+				return relist;
+			}
+
+			function upload(str) {
+				console.log(str)
+				window.location.href = '/nyp-h5/upload.html';
+			}
+			function point() {
+				window.location.href = '/nyp-h5/point_list.html';
+			}
+
+		</script>
+	</body>
+</html>
